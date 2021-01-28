@@ -1,0 +1,78 @@
+version: 2
+
+sources:
+  - name: uos
+    tables:
+      - name: order_payment_gateway_names
+      - name: refunds
+      - name: order_line_items
+      - name: orders 
+      - name: transactions 
+      - name: fulfillments 
+      - name: products 
+  
+  - name: drp
+    tables:
+      - name: uos_order_lkp
+      - name: integration_mapping
+      - name: order_channel_source
+      - name: kpi_metrics
+      - name: calendar
+      - name: daily_marketing_spend
+      - name: customer_recency_group
+      - name: rfm_monetary_values   
+      - name: order_business_unit
+      - name: email_campaign_detail
+      
+  - name: ugd
+    tables:
+      - name: budget
+
+  - name: retailnext
+    tables:
+      - name: traffic
+      - name: locations
+  
+  - name: gsheets
+    tables:
+      - name: retention_budget      
+      
+  - name: email
+    tables:
+      - name: campaign_lists
+      - name: campaigns
+      - name: lists
+      - name: sends
+      - name: opens
+      - name: members
+      - name: member_attributes
+      - name: clicks
+      
+          
+      
+      
+exposures:
+  
+  - name: drp_data_validation
+    type: analysis
+    owner:
+      name: daasity dan
+      email: data@daasity.com
+    depends_on:
+      - ref('drp__order_status')
+      - ref('drp__order_channel')
+      - ref('drp__daily_plan')
+      - ref('drp__daily_plan_to_actual')
+      
+  
+    
+
+
+
+
+
+
+
+
+
+
